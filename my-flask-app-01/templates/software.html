@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Software List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="page-wrapper">
+        <header class="page-header">Software for Selected Semester</header>
+
+        <section class="software-list">
+            {% for s in software %}
+                <article class="software-card">
+                    <h3>{{ s[1] }} <span class="software-version">– Version {{ s[2] }}</span></h3>
+                    <div class="software-actions">
+                        <a href="/installation/{{ s[0] }}" class="install-btn">Installation Guide</a>
+                        <a href="/errors/{{ s[0] }}" class="error-btn">Common Errors</a>
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+
+        <div class="page-footer">
+            <a href="/" class="button" onclick="if (document.referrer) { history.back(); return false; }">Back</a>
+        </div>
+    </main>
+</body>
+</html>
